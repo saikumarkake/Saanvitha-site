@@ -34,7 +34,8 @@ const PRODUCTS = [
       "images/detail-pallu.jpg"
     ],
     colour: "Gold / Champagne with Rani Pink border",
-    fabric: "Handloom Weave (placeholder name — swap for the real fabric once confirmed)",
+    fabric: "Handloom Weave",
+    fabricNote: "Placeholder name — swap for the real fabric once confirmed",
     weave: null,                // add weave details
     occasion: null,             // add suggested occasion
     length: null,                // add saree length

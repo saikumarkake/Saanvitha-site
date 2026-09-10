@@ -228,6 +228,12 @@ p{ margin: 0; }
   background: var(--rani);
 }
 
+/* Mobile off-canvas menu — a separate element from .main-nav (not nested inside
+   the sticky header), so position:fixed works correctly even in strict WebKit
+   in-app browsers. Hidden by default; only shown and made fixed inside the
+   mobile media query below. */
+.mobile-nav{ display:none; }
+
 .header-actions{ display:flex; align-items:center; gap: 18px; }
 .icon-btn{
   width:38px; height:38px;
@@ -805,7 +811,9 @@ p{ margin: 0; }
 }
 
 @media (max-width: 780px){
-  .main-nav{
+  .main-nav{ display:none; }
+  .mobile-nav{
+    display:flex;
     position: fixed;
     top: 73px;
     left: 0;
@@ -823,8 +831,9 @@ p{ margin: 0; }
     transition: transform .35s var(--ease);
     z-index: 39;
   }
-  .main-nav.open{ transform: translateX(0); }
-  .main-nav a{ padding: 14px 0; border-bottom:1px solid var(--line-soft); font-size:1.05rem; display:block; }
+  .mobile-nav.open{ transform: translateX(0); }
+  .mobile-nav a{ padding: 14px 0; border-bottom:1px solid var(--line-soft); font-size:1.05rem; display:block; color: var(--ink); }
+  .mobile-nav a.active{ color: var(--rani); }
   .menu-toggle{ display:flex; }
 
   .hero .container{ grid-template-columns: 1fr; }

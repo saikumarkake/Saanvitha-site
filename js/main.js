@@ -12,7 +12,7 @@ function waLink(message){
 // ---- Mobile nav ----
 function initNav(){
   const toggle = document.querySelector(".menu-toggle");
-  const nav = document.querySelector(".main-nav");
+  const nav = document.querySelector(".mobile-nav");
   if(!toggle || !nav) return;
   toggle.addEventListener("click", () => {
     const open = nav.classList.toggle("open");

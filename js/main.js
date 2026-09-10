@@ -203,7 +203,7 @@ function initProductDetail(){
       <div class="pdp-price">${formatPrice(p.price)}</div>
       <div class="kinara"></div>
       <table class="spec-table">
-        <tr><th>Fabric</th><td class="${p.fabric?'':'ph'}">${val(p.fabric)}</td></tr>
+        <tr><th>Fabric</th><td class="${p.fabric?'':'ph'}">${val(p.fabric)}${p.fabricNote ? `<br><span class="ph" style="font-size:0.78rem;">${p.fabricNote}</span>` : ""}</td></tr>
         <tr><th>Weave</th><td class="${p.weave?'':'ph'}">${val(p.weave)}</td></tr>
         <tr><th>Colour</th><td>${val(p.colour)}</td></tr>
         <tr><th>Saree length</th><td class="${p.length?'':'ph'}">${val(p.length)}</td></tr>
@@ -216,7 +216,7 @@ function initProductDetail(){
         </a>
         <a href="${waLink('Hi Saanvitha, I have a question about the ' + p.name + '.')}" target="_blank" rel="noopener" class="btn btn-outline">Enquire now</a>
       </div>
-      ${(!p.fabric || !p.weave || p.price==null) ? `<div class="pdp-note">Some details for this saree — ${[!p.fabric&&'fabric', !p.weave&&'weave', p.price==null&&'price'].filter(Boolean).join(', ')} — haven't been added yet. Reach out on WhatsApp and we'll confirm before you order.</div>` : ""}
+      ${(!p.fabric || p.fabricNote || !p.weave || p.price==null) ? `<div class="pdp-note">Some details for this saree — ${[(!p.fabric||p.fabricNote)&&'fabric', !p.weave&&'weave', p.price==null&&'price'].filter(Boolean).join(', ')} — ${p.fabricNote ? 'are still placeholders or ' : ''}haven't been fully confirmed yet. Reach out on WhatsApp and we'll confirm before you order.</div>` : ""}
       <div class="accordion">
         <details open>
           <summary>Description</summary>

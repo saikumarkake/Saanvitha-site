@@ -33,7 +33,7 @@ const PRODUCTS = [
       "images/detail-border.jpg",
       "images/detail-pallu.jpg"
     ],
-    colour: "Gold / Champagne with Rani Pink border",
+    colour: "Gold / Champagne",
     fabric: "Handloom Weave",
     fabricNote: "Placeholder name — swap for the real fabric once confirmed",
     weave: null,                // add weave details

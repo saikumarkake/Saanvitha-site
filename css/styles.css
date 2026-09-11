@@ -434,11 +434,12 @@ p{ margin: 0; }
 }
 .card-meta div:first-child{ border-left:none; padding-left:0; }
 .card-meta .label{ display:block; font-size: 0.68rem; color: var(--ink-faint); margin-bottom:3px; }
-.card-meta .value{ font-size: 0.82rem; color: var(--ink); }
+.card-meta .value{ font-size: 0.82rem; color: var(--ink); overflow-wrap: anywhere; word-break: break-word; }
 .card-meta .value.ph, .ph-text{ color: var(--ink-faint); font-style: italic; }
 
 .card-actions{ display:flex; flex-direction:column; gap:10px; }
-.card-actions .btn{ white-space: normal; text-align: center; line-height: 1.3; }
+.card-actions .btn{ white-space: normal; text-align: center; line-height: 1.3; padding: 10px 12px; gap: 6px; font-size: 0.82rem; }
+.card-actions .btn .wa-icon{ width:14px; height:14px; }
 
 /* ---------- Filters (Shop) ---------- */
 .shop-layout{

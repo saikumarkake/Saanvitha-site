@@ -43,7 +43,8 @@ const PRODUCTS = [
     care: "Dry clean is recommended to protect the border colour and any metallic-look thread. If you choose to hand wash, use cold water with a mild detergent, wash it separately from other clothes, and don't wring it. Dry flat or on a padded hanger, out of direct sunlight, then iron on the reverse side on a low-to-medium setting with a thin cloth between the iron and the fabric. Store folded in a breathable cotton or muslin cloth, and refold along different lines every few months to avoid permanent crease marks.",
     shipping: "Orders are shipped within 3&ndash;5 business days of confirmation, using a trusted courier partner, and tracking details are shared with you on WhatsApp once the order is dispatched. Unused, unworn sarees with original tags and packaging intact can be returned within 7 days of delivery. To start a return or exchange, message us on WhatsApp with your order details and reason &mdash; we'll take it from there.",
     tag: "Featured",
-    badgeColour: "gold"
+    badgeColour: "gold",
+    sections: ["featured", "new"]
   },
   {
     id: "sample-01",
@@ -56,6 +57,7 @@ const PRODUCTS = [
     weave: "Zari border",
     occasion: "Wedding",
     tag: "New",
+    sections: ["featured", "new"]
   },
   {
     id: "sample-02",
@@ -68,6 +70,7 @@ const PRODUCTS = [
     weave: "Temple border",
     occasion: "Festive",
     tag: "Best seller",
+    sections: ["featured", "bestseller"]
   },
   {
     id: "sample-03",
@@ -80,6 +83,7 @@ const PRODUCTS = [
     weave: "Butta",
     occasion: "Party",
     tag: "New",
+    sections: ["featured", "new"]
   },
   {
     id: "sample-04",
@@ -92,6 +96,7 @@ const PRODUCTS = [
     weave: "Plain",
     occasion: "Everyday",
     tag: "Best seller",
+    sections: ["bestseller"]
   },
   {
     id: "sample-05",
@@ -104,6 +109,7 @@ const PRODUCTS = [
     weave: "Printed",
     occasion: "Festive",
     tag: null,
+    sections: []
   },
   {
     id: "sample-06",
@@ -116,6 +122,7 @@ const PRODUCTS = [
     weave: "Zari border",
     occasion: "Wedding",
     tag: "New",
+    sections: ["new"]
   },
   {
     id: "sample-07",
@@ -128,6 +135,7 @@ const PRODUCTS = [
     weave: "Plain",
     occasion: "Everyday",
     tag: null,
+    sections: []
   },
 ];
 

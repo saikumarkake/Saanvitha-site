@@ -87,7 +87,22 @@ function initShop(){
   const grid = document.querySelector("#shop-grid");
   if(!grid) return;
 
-  const state = { colour: new Set(), fabric: new Set(), weave: new Set(), occasion: new Set(), maxPrice: 10000, sort: "featured" };
+  const SECTION_LABELS = { featured: "Featured sarees", new: "New arrivals", bestseller: "Best sellers" };
+  const params = new URLSearchParams(location.search);
+  const initialSection = params.get("section");
+
+  const state = { colour: new Set(), fabric: new Set(), weave: new Set(), occasion: new Set(), maxPrice: 10000, sort: "featured", section: (initialSection && SECTION_LABELS[initialSection]) ? initialSection : null };
+
+  function renderSectionNote(){
+    const note = document.querySelector("#section-filter-note");
+    if(!note) return;
+    if(state.section){
+      note.innerHTML = `Showing: <strong>${SECTION_LABELS[state.section]}</strong> &middot; <a href="shop.html">View all sarees</a>`;
+      note.style.display = "block";
+    } else {
+      note.style.display = "none";
+    }
+  }
 
   function buildFilterGroup(key, label){
     const wrap = document.querySelector(`[data-filter-group="${key}"]`);
@@ -129,14 +144,18 @@ function initShop(){
     clearBtn.addEventListener("click", () => {
       state.colour.clear(); state.fabric.clear(); state.weave.clear(); state.occasion.clear();
       state.maxPrice = 10000;
+      state.section = null;
+      history.replaceState(null, "", "shop.html");
       document.querySelectorAll("[data-filter]").forEach(i => i.checked = false);
       if(priceRange){ priceRange.value = 10000; priceOut.textContent = formatPrice(10000); }
+      renderSectionNote();
       apply();
     });
   }
 
   function apply(){
     let items = PRODUCTS.filter(p => {
+      if(state.section && !(p.sections||[]).includes(state.section)) return false;
       if(state.colour.size && !state.colour.has(p.colour)) return false;
       if(state.fabric.size && !state.fabric.has(p.fabric)) return false;
       if(state.weave.size && !state.weave.has(p.weave)) return false;
@@ -152,6 +171,7 @@ function initShop(){
     if(count) count.textContent = `${items.length} saree${items.length===1?"":"s"}`;
   }
 
+  renderSectionNote();
   apply();
 
   const filterToggle = document.querySelector("#mobile-filter-toggle");
@@ -166,9 +186,9 @@ function initHomeRails(){
   const featured = document.querySelector("#featured-grid");
   const arrivals = document.querySelector("#arrivals-rail");
   const sellers = document.querySelector("#sellers-rail");
-  if(featured) renderGrid(featured, PRODUCTS.slice(0,4));
-  if(arrivals) renderGrid(arrivals, PRODUCTS.filter(p => p.tag === "New" || p.isReal));
-  if(sellers) renderGrid(sellers, PRODUCTS.filter(p => p.tag === "Best seller"));
+  if(featured) renderGrid(featured, PRODUCTS.filter(p => (p.sections||[]).includes("featured")));
+  if(arrivals) renderGrid(arrivals, PRODUCTS.filter(p => (p.sections||[]).includes("new")));
+  if(sellers) renderGrid(sellers, PRODUCTS.filter(p => (p.sections||[]).includes("bestseller")));
 }
 
 // ---- Product detail page ----

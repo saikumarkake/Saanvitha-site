@@ -130,6 +130,26 @@ p{ margin: 0; }
   max-width: 640px;
 }
 .section-head.center{ align-items:center; text-align:center; margin-left:auto; margin-right:auto; }
+
+.section-head-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:20px;
+  margin-bottom:44px;
+  flex-wrap:wrap;
+}
+.section-head-row .section-head{ margin-bottom:0; }
+.see-all{
+  font-size:0.9rem;
+  color: var(--rani);
+  white-space:nowrap;
+  padding-bottom:3px;
+  border-bottom:1px solid transparent;
+  transition: border-color .2s var(--ease);
+  flex:none;
+}
+.see-all:hover{ border-bottom-color: var(--rani); }
 .section-head p{ color: var(--ink-soft); font-size: 1.05rem; }
 
 /* ---------- Buttons ---------- */
@@ -869,6 +889,12 @@ p{ margin: 0; }
   .hero-copy{ text-align:left; }
 
   .product-grid{ grid-template-columns: repeat(2,1fr); }
+  .rail{ grid-auto-columns: minmax(210px, 1fr); }
+  .card-meta{ flex-direction: column; }
+  .card-meta div{ border-left:none; border-top:1px solid var(--line-soft); padding:8px 0; }
+  .card-meta div:first-child{ border-top:none; padding-top:0; }
+  .card-meta .label{ display:inline-block; width:60px; }
+  .card-meta .value{ display:inline; }
   .value-grid{ grid-template-columns: 1fr 1fr; }
   .testimonial-grid{ grid-template-columns: 1fr; }
   .collection-grid{ grid-template-columns: 1fr; }

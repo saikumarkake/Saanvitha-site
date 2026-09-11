@@ -137,6 +137,7 @@ p{ margin: 0; }
   display: inline-flex;
   align-items: center;
   gap: 10px;
+  min-width: 0;
   padding: 15px 32px;
   font-family: var(--font-body);
   font-size: 0.95rem;
@@ -174,7 +175,7 @@ p{ margin: 0; }
 .btn-whatsapp:hover{ background: var(--teal-deep); }
 
 .btn-block{ width:100%; justify-content:center; }
-.btn-sm{ padding: 10px 20px; font-size: 0.85rem; }
+.btn-sm{ padding: 10px 16px; font-size: 0.85rem; white-space: normal; text-align: center; line-height: 1.3; }
 
 .wa-icon{ width:16px; height:16px; flex:none; }
 
@@ -437,6 +438,7 @@ p{ margin: 0; }
 .card-meta .value.ph, .ph-text{ color: var(--ink-faint); font-style: italic; }
 
 .card-actions{ display:flex; flex-direction:column; gap:10px; }
+.card-actions .btn{ white-space: normal; text-align: center; line-height: 1.3; }
 
 /* ---------- Filters (Shop) ---------- */
 .shop-layout{
@@ -812,7 +814,7 @@ p{ margin: 0; }
 .collection-grid > *, .gallery-grid > *, .footer-top > *, .stat-row > *,
 .form-row > *, .team-grid > *, .contact-layout > *, .pdp > *,
 .shop-layout > *, .story-block > *, .card-meta > *, .header-inner > *,
-.hero .container > *{
+.hero .container > *, .card-actions > *, .hero-ctas > *, .pdp-actions > *{
   min-width: 0;
 }
 
@@ -879,7 +881,7 @@ p{ margin: 0; }
 }
 
 @media (max-width: 520px){
-  .product-grid{ grid-template-columns: repeat(2,1fr); gap:14px; }
+  .product-grid{ grid-template-columns: 1fr; gap:18px; }
   .value-grid{ grid-template-columns: 1fr; }
   .gallery-grid{ grid-template-columns: repeat(2,1fr); }
   .team-grid{ grid-template-columns: 1fr 1fr; }

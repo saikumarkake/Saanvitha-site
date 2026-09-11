@@ -1,0 +1,27 @@
+<svg viewBox="0 0 640 230" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .word { font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif; }
+      .tag { font-family: "Jost", "Segoe UI", sans-serif; }
+    </style>
+  </defs>
+
+  <!-- background: transparent by default; a soft cream card for preview -->
+  <rect x="0" y="0" width="640" height="230" fill="#FAF5EA"/>
+
+  <!-- wordmark -->
+  <text x="320" y="128" class="word" font-size="94" font-weight="500"
+        fill="#2A2320" text-anchor="middle" letter-spacing="0.5">Saanvitha</text>
+
+  <!-- kinara rule: thin gold line + thicker rani-pink band, echoes the site's border motif -->
+  <g>
+    <rect x="272" y="152" width="96" height="1.4" fill="#A9793A"/>
+    <rect x="272" y="157" width="96" height="5" fill="#971C4C"/>
+  </g>
+
+  <!-- tagline -->
+  <text x="320" y="190" class="tag" font-size="15" font-weight="400"
+        fill="#8C6428" text-anchor="middle" letter-spacing="4.5">HANDLOOM SAREES</text>
+  <text x="320" y="212" class="tag" font-size="11" font-weight="400"
+        fill="#9C9084" text-anchor="middle" letter-spacing="2.5">EST. HYDERABAD</text>
+</svg>

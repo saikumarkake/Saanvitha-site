@@ -203,10 +203,14 @@ p{ margin: 0; }
   font-weight: 600;
   color: var(--ink);
   display:flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
   line-height: 1.05;
 }
-.brand span{
+.brand-icon{ width:34px; height:34px; flex:none; }
+.brand-text{ display:flex; flex-direction:column; }
+.brand-text .tagline{
   font-family: var(--font-body);
   font-size: 0.62rem;
   font-weight: 400;
@@ -214,6 +218,7 @@ p{ margin: 0; }
   color: var(--ink-soft);
   margin-top: 4px;
 }
+.footer-brand .brand-icon{ filter: brightness(1.1); }
 
 .main-nav{ display:flex; gap: 36px; }
 .main-nav a{

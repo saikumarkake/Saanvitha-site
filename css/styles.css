@@ -291,7 +291,7 @@ p{ margin: 0; }
 
 /* ---------- Hero ---------- */
 .hero{
-  padding: clamp(40px, 7vw, 88px) 0 clamp(56px, 8vw, 96px);
+  padding: clamp(28px, 5vw, 56px) 0 clamp(40px, 6vw, 64px);
   position: relative;
   overflow: hidden;
 }
@@ -300,17 +300,17 @@ p{ margin: 0; }
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: clamp(36px, 5vw, 56px);
+  gap: clamp(18px, 2.5vw, 26px);
 }
 .hero-copy{ display:flex; flex-direction:column; align-items:center; max-width:720px; }
-.hero-copy .kinara{ margin-left:auto; margin-right:auto; }
-.hero-copy .eyebrow-mark{ margin-bottom: 22px; }
-.hero-copy h1{ margin-bottom: 22px; }
+.hero-copy .kinara{ margin: 0 auto 12px; }
+.hero-copy .eyebrow-mark{ margin-bottom: 12px; }
+.hero-copy h1{ margin-bottom: 12px; }
 .hero-copy .lede{
   font-size: 1.12rem;
   color: var(--ink-soft);
   max-width: 46ch;
-  margin-bottom: 34px;
+  margin-bottom: 20px;
 }
 .hero-ctas{ display:flex; gap:16px; flex-wrap:wrap; justify-content:center; }
 
@@ -318,7 +318,7 @@ p{ margin: 0; }
   position: relative;
   justify-self: center;
   width: 100%;
-  max-width: 520px;
+  max-width: 380px;
   order: -1;
 }
 .hero-carousel .frame-inner{
@@ -330,7 +330,7 @@ p{ margin: 0; }
 }
 .hero-carousel-track{
   display:flex;
-  aspect-ratio: 407/491;
+  aspect-ratio: 4/3;
   background: var(--paper);
   transition: transform .55s var(--ease);
   touch-action: pan-y;
@@ -915,7 +915,7 @@ p{ margin: 0; }
   .menu-toggle{ display:flex; }
 
   .hero .container{ grid-template-columns: 1fr; }
-  .hero-carousel{ max-width:340px; }
+  .hero-carousel{ max-width:280px; }
 
   .product-grid{ grid-template-columns: repeat(2,1fr); }
   .rail{ grid-auto-columns: minmax(210px, 1fr); }

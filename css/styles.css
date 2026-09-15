@@ -311,42 +311,66 @@ p{ margin: 0; }
 }
 .hero-ctas{ display:flex; gap:16px; flex-wrap:wrap; }
 
-.hero-frame{
+.hero-carousel{
   position: relative;
   justify-self: center;
   width: 100%;
   max-width: 300px;
 }
-.hero-frame .frame-inner{
+.hero-carousel .frame-inner{
   background: var(--white);
   padding: 18px;
   border: 1px solid var(--line);
   box-shadow: 0 30px 60px -30px rgba(42,35,32,0.35);
+  overflow: hidden;
 }
-.hero-frame .frame-photo{
-  width: 100%;
+.hero-carousel-track{
+  display:flex;
   aspect-ratio: 407/491;
   background: var(--paper);
-  display:flex; align-items:center; justify-content:center;
-  overflow:hidden;
+  transition: transform .55s var(--ease);
+  touch-action: pan-y;
 }
-.hero-frame .frame-photo img{
+.hero-slide{
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+  display:block;
+}
+.hero-slide img{
   width:100%; height:100%; object-fit:cover;
-  animation: reveal-img 1.1s var(--ease) both;
+  pointer-events: none;
+  -webkit-user-drag: none;
 }
-@keyframes reveal-img{
-  from{ opacity:0; transform: scale(1.04); }
-  to{ opacity:1; transform: scale(1); }
+.hero-carousel-dots{
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  margin-top:14px;
 }
-.hero-frame figcaption{
-  margin-top: 16px;
+.hero-carousel-dots button{
+  width:7px; height:7px;
+  padding:0;
+  border-radius:50%;
+  border:1px solid var(--gold);
+  background: transparent;
+  transition: background-color .2s var(--ease), width .2s var(--ease);
+}
+.hero-carousel-dots button.active{
+  background: var(--rani);
+  border-color: var(--rani);
+  width:18px;
+  border-radius:4px;
+}
+.hero-carousel-caption{
+  margin-top: 10px;
   text-align:center;
   font-size: 0.82rem;
   color: var(--ink-soft);
   font-style: italic;
   font-family: var(--font-display);
 }
-.hero-frame .kinara{ margin: 0 auto 14px; }
+.hero-carousel .kinara{ margin: 0 auto 14px; }
 
 /* ---------- Marquee / trust strip ---------- */
 .trust-strip{
@@ -887,7 +911,7 @@ p{ margin: 0; }
   .menu-toggle{ display:flex; }
 
   .hero .container{ grid-template-columns: 1fr; }
-  .hero-frame{ order:-1; max-width:240px; }
+  .hero-carousel{ order:-1; max-width:240px; }
   .hero-copy{ text-align:left; }
 
   .product-grid{ grid-template-columns: repeat(2,1fr); }

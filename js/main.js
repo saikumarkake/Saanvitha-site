@@ -265,9 +265,97 @@ function initProductDetail(){
   });
 }
 
+// ---- Home hero carousel ----
+function initHeroCarousel(){
+  const root = document.querySelector("#hero-carousel");
+  const track = document.querySelector("#hero-carousel-track");
+  const dotsWrap = document.querySelector("#hero-carousel-dots");
+  if(!root || !track) return;
+
+  const slides = Array.from(track.children);
+  if(slides.length <= 1) return;
+
+  let index = 0;
+  let timer = null;
+  const AUTO_MS = 4500;
+
+  dotsWrap.innerHTML = slides.map((_, i) =>
+    `<button aria-label="Go to slide ${i+1}" class="${i===0?'active':''}"></button>`
+  ).join("");
+  const dots = Array.from(dotsWrap.children);
+
+  function goTo(i){
+    index = (i + slides.length) % slides.length;
+    track.style.transform = `translateX(-${index * 100}%)`;
+    dots.forEach((d, di) => d.classList.toggle("active", di === index));
+  }
+
+  function next(){ goTo(index + 1); }
+
+  function startAuto(){
+    stopAuto();
+    timer = setInterval(next, AUTO_MS);
+  }
+  function stopAuto(){
+    if(timer) clearInterval(timer);
+    timer = null;
+  }
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener("click", () => { goTo(i); startAuto(); });
+  });
+
+  // Pause auto-advance while the user is interacting
+  root.addEventListener("mouseenter", stopAuto);
+  root.addEventListener("mouseleave", startAuto);
+
+  // Touch swipe, with drag-vs-tap detection so a swipe doesn't
+  // accidentally trigger the slide's link navigation
+  let startX = 0, currentX = 0, dragging = false, moved = false;
+
+  track.addEventListener("touchstart", (e) => {
+    stopAuto();
+    startX = e.touches[0].clientX;
+    currentX = startX;
+    dragging = true;
+    moved = false;
+    track.style.transition = "none";
+  }, { passive: true });
+
+  track.addEventListener("touchmove", (e) => {
+    if(!dragging) return;
+    currentX = e.touches[0].clientX;
+    const delta = currentX - startX;
+    if(Math.abs(delta) > 6) moved = true;
+    const percent = (delta / track.offsetWidth) * 100;
+    track.style.transform = `translateX(calc(-${index * 100}% + ${percent}%))`;
+  }, { passive: true });
+
+  track.addEventListener("touchend", () => {
+    dragging = false;
+    track.style.transition = "";
+    const delta = currentX - startX;
+    if(delta < -40) goTo(index + 1);
+    else if(delta > 40) goTo(index - 1);
+    else goTo(index);
+    startAuto();
+  });
+
+  // Prevent the click-through-navigation when the touch was actually a swipe
+  slides.forEach(slide => {
+    slide.addEventListener("click", (e) => {
+      if(moved) e.preventDefault();
+    });
+  });
+
+  goTo(0);
+  startAuto();
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   initNav();
   initHomeRails();
   initShop();
   initProductDetail();
+  initHeroCarousel();
 });

@@ -148,6 +148,7 @@ p{ margin: 0; }
   border-bottom:1px solid transparent;
   transition: border-color .2s var(--ease);
   flex:none;
+  margin-left: auto;
 }
 .see-all:hover{ border-bottom-color: var(--rani); }
 .section-head p{ color: var(--ink-soft); font-size: 1.05rem; }
@@ -383,8 +384,8 @@ p{ margin: 0; }
 .rail{
   display:grid;
   grid-auto-flow: column;
-  grid-auto-columns: minmax(240px, 1fr);
-  gap: 24px;
+  grid-auto-columns: minmax(220px, 1fr);
+  gap: 20px;
   overflow-x: auto;
   padding-bottom: 12px;
   scroll-snap-type: x proximity;
@@ -447,6 +448,7 @@ p{ margin: 0; }
 
 .card-meta{
   display:flex;
+  flex-direction: column;
   border-top: 1px solid var(--line-soft);
   border-bottom: 1px solid var(--line-soft);
   margin-bottom: 18px;
@@ -454,12 +456,12 @@ p{ margin: 0; }
 .card-meta div{
   flex:1;
   min-width: 0;
-  padding: 10px 10px 10px 0;
-  border-left: 1px solid var(--line-soft);
+  padding: 8px 0;
+  border-top: 1px solid var(--line-soft);
 }
-.card-meta div:first-child{ border-left:none; padding-left:0; }
-.card-meta .label{ display:block; font-size: 0.68rem; color: var(--ink-faint); margin-bottom:3px; }
-.card-meta .value{ font-size: 0.82rem; color: var(--ink); overflow-wrap: anywhere; word-break: break-word; }
+.card-meta div:first-child{ border-top:none; padding-top:0; }
+.card-meta .label{ display:inline-block; width:60px; font-size: 0.68rem; color: var(--ink-faint); margin-bottom:3px; }
+.card-meta .value{ display:inline; font-size: 0.82rem; color: var(--ink); overflow-wrap: anywhere; word-break: break-word; }
 .card-meta .value.ph, .ph-text{ color: var(--ink-faint); font-style: italic; }
 
 .card-actions{ display:flex; flex-direction:column; gap:10px; }
@@ -890,11 +892,6 @@ p{ margin: 0; }
 
   .product-grid{ grid-template-columns: repeat(2,1fr); }
   .rail{ grid-auto-columns: minmax(210px, 1fr); }
-  .card-meta{ flex-direction: column; }
-  .card-meta div{ border-left:none; border-top:1px solid var(--line-soft); padding:8px 0; }
-  .card-meta div:first-child{ border-top:none; padding-top:0; }
-  .card-meta .label{ display:inline-block; width:60px; }
-  .card-meta .value{ display:inline; }
   .value-grid{ grid-template-columns: 1fr 1fr; }
   .testimonial-grid{ grid-template-columns: 1fr; }
   .collection-grid{ grid-template-columns: 1fr; }

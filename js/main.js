@@ -238,7 +238,7 @@ function initProductDetail(){
       </div>
       ${(!p.fabric || p.fabricNote || !p.weave || p.price==null) ? `<div class="pdp-note">Some details for this saree — ${[(!p.fabric||p.fabricNote)&&'fabric', !p.weave&&'weave', p.price==null&&'price'].filter(Boolean).join(', ')} — ${p.fabricNote ? 'are still placeholders or ' : ''}haven't been fully confirmed yet. Reach out on WhatsApp and we'll confirm before you order.</div>` : ""}
       <div class="accordion">
-        <details open>
+        <details>
           <summary>Description</summary>
           <div class="acc-body ${p.isReal ? 'ph' : ''}">${p.isReal ? "A detailed description of this saree hasn't been added yet — including its craft story, motif inspiration and styling notes." : "A quiet, versatile weave built for both festive wear and everyday elegance. Pair with a contrast blouse for a modern look, or keep it classic with a matching one."}</div>
         </details>

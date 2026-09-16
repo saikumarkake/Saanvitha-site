@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css?v=20">
+<link rel="stylesheet" href="css/styles.css?v=21">
   <title>Product Details | Saanvitha</title>
   <meta name="description" content="Saree product details, fabric, weave and colour information.">
 </head>
@@ -49,6 +49,22 @@
       </div>
     </div>
   </section>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close image viewer">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <button class="lightbox-arrow lightbox-prev" id="lightbox-prev" aria-label="Previous image">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <div class="lightbox-stage">
+      <img src="" alt="" id="lightbox-img">
+      <span class="lightbox-counter" id="lightbox-counter"></span>
+    </div>
+    <button class="lightbox-arrow lightbox-next" id="lightbox-next" aria-label="Next image">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 6l6 6-6 6"/></svg>
+    </button>
+  </div>
 
   <section class="section alt">
     <div class="container">
@@ -124,7 +140,7 @@
     </div>
   </footer>
 
-  <script src="js/products.js?v=20"></script>
-  <script src="js/main.js?v=20"></script>
+  <script src="js/products.js?v=21"></script>
+  <script src="js/main.js?v=21"></script>
 </body>
 </html>

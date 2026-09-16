@@ -259,13 +259,89 @@ function initProductDetail(){
 
   const thumbs = root.querySelectorAll(".pdp-thumbs button");
   const mainSlot = () => document.querySelector("#pdp-main-img");
-  thumbs.forEach(btn => {
-    btn.addEventListener("click", () => {
-      thumbs.forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
-      const img = mainSlot();
-      if(img && img.tagName === "IMG") img.src = btn.dataset.src;
-    });
+  let currentIndex = 0;
+
+  function setActive(i){
+    currentIndex = i;
+    thumbs.forEach((b, bi) => b.classList.toggle("active", bi === i));
+    const img = mainSlot();
+    if(img && img.tagName === "IMG" && gallery[i]) img.src = gallery[i];
+  }
+
+  thumbs.forEach((btn, i) => {
+    btn.addEventListener("click", () => setActive(i));
+  });
+
+  initLightbox(gallery, () => currentIndex, setActive);
+}
+
+// ---- Full-screen image lightbox (product page) ----
+function initLightbox(gallery, getIndex, setIndex){
+  if(!gallery.length) return;
+  const mainImg = document.querySelector("#pdp-main-img");
+  const lightbox = document.querySelector("#lightbox");
+  if(!mainImg || mainImg.tagName !== "IMG" || !lightbox) return;
+
+  const lbImg = document.querySelector("#lightbox-img");
+  const lbCounter = document.querySelector("#lightbox-counter");
+  const closeBtn = document.querySelector("#lightbox-close");
+  const prevBtn = document.querySelector("#lightbox-prev");
+  const nextBtn = document.querySelector("#lightbox-next");
+
+  function render(){
+    const i = getIndex();
+    lbImg.src = gallery[i];
+    if(lbCounter) lbCounter.textContent = gallery.length > 1 ? `${i+1} / ${gallery.length}` : "";
+    const multi = gallery.length > 1;
+    if(prevBtn) prevBtn.style.display = multi ? "flex" : "none";
+    if(nextBtn) nextBtn.style.display = multi ? "flex" : "none";
+  }
+
+  function open(){
+    render();
+    lightbox.classList.add("open");
+    lightbox.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  }
+  function close(){
+    lightbox.classList.remove("open");
+    lightbox.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+  }
+  function next(){ setIndex((getIndex() + 1) % gallery.length); render(); }
+  function prev(){ setIndex((getIndex() - 1 + gallery.length) % gallery.length); render(); }
+
+  mainImg.style.cursor = "zoom-in";
+  mainImg.addEventListener("click", open);
+  closeBtn.addEventListener("click", close);
+  nextBtn.addEventListener("click", next);
+  prevBtn.addEventListener("click", prev);
+  lightbox.addEventListener("click", (e) => { if(e.target === lightbox) close(); });
+
+  document.addEventListener("keydown", (e) => {
+    if(!lightbox.classList.contains("open")) return;
+    if(e.key === "Escape") close();
+    if(e.key === "ArrowRight") next();
+    if(e.key === "ArrowLeft") prev();
+  });
+
+  // Touch swipe for mobile
+  let startX = 0, deltaX = 0, dragging = false;
+  lbImg.addEventListener("touchstart", (e) => {
+    startX = e.touches[0].clientX;
+    deltaX = 0;
+    dragging = true;
+  }, { passive: true });
+  lbImg.addEventListener("touchmove", (e) => {
+    if(!dragging) return;
+    deltaX = e.touches[0].clientX - startX;
+  }, { passive: true });
+  lbImg.addEventListener("touchend", () => {
+    if(!dragging) return;
+    dragging = false;
+    if(deltaX < -40) next();
+    else if(deltaX > 40) prev();
+    deltaX = 0;
   });
 }
 

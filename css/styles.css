@@ -809,6 +809,79 @@ p{ margin: 0; }
 .team-card h4{ font-family: var(--font-display); font-size:1.1rem; }
 .team-card span{ font-size:0.82rem; color: var(--ink-soft); }
 
+/* ---------- Product image lightbox ---------- */
+.lightbox{
+  display:none;
+  position: fixed;
+  inset: 0;
+  background: rgba(20,16,14,0.95);
+  z-index: 200;
+  align-items:center;
+  justify-content:center;
+}
+.lightbox.open{ display:flex; }
+.lightbox-stage{
+  position:relative;
+  max-width:92vw;
+  max-height:88vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  touch-action: pan-y;
+}
+.lightbox-stage img{
+  max-width:92vw;
+  max-height:88vh;
+  width:auto; height:auto;
+  object-fit:contain;
+  -webkit-user-select:none; user-select:none;
+  -webkit-user-drag:none;
+}
+.lightbox-counter{
+  position:absolute;
+  bottom:-32px;
+  left:50%;
+  transform:translateX(-50%);
+  color: rgba(250,245,234,0.75);
+  font-family: var(--font-body);
+  font-size:0.85rem;
+  letter-spacing:0.04em;
+}
+.lightbox-close{
+  position:absolute;
+  top:18px; right:18px;
+  width:42px; height:42px;
+  border:1px solid rgba(250,245,234,0.4);
+  border-radius:50%;
+  background: transparent;
+  color: var(--cream);
+  display:flex; align-items:center; justify-content:center;
+  z-index:2;
+}
+.lightbox-close svg{ width:18px; height:18px; }
+.lightbox-close:hover{ background: rgba(250,245,234,0.12); }
+.lightbox-arrow{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:48px; height:48px;
+  border:1px solid rgba(250,245,234,0.4);
+  border-radius:50%;
+  background: transparent;
+  color: var(--cream);
+  display:flex; align-items:center; justify-content:center;
+  z-index:2;
+}
+.lightbox-arrow:hover{ background: rgba(250,245,234,0.12); }
+.lightbox-arrow svg{ width:20px; height:20px; }
+.lightbox-prev{ left:18px; }
+.lightbox-next{ right:18px; }
+
+@media (max-width:780px){
+  .lightbox-arrow{ display:none !important; }
+  .lightbox-close{ top:14px; right:14px; }
+}
+
 /* ---------- Contact page ---------- */
 .contact-layout{
   display:grid; grid-template-columns: 1fr 1fr; gap: clamp(32px,5vw,72px);

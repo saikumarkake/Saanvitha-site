@@ -71,7 +71,7 @@ h1,h2,h3,h4{
   letter-spacing: 0.005em;
 }
 
-h1{ font-size: clamp(2.6rem, 6vw, 4.6rem); line-height: 1.06; font-weight: 500; }
+h1{ font-size: clamp(2.4rem, 5vw, 4rem); line-height: 1.08; font-weight: 500; }
 h2{ font-size: clamp(1.8rem, 3.4vw, 2.6rem); line-height: 1.15; }
 h3{ font-size: clamp(1.3rem, 2vw, 1.55rem); line-height: 1.25; }
 
@@ -213,7 +213,7 @@ p{ margin: 0; }
   display:flex;
   align-items:center;
   justify-content: space-between;
-  padding: 20px var(--gutter);
+  padding: 14px var(--gutter);
   max-width: var(--maxw);
   margin: 0 auto;
   gap: 24px;
@@ -291,7 +291,7 @@ p{ margin: 0; }
 
 /* ---------- Hero ---------- */
 .hero{
-  padding: clamp(28px, 5vw, 56px) 0 clamp(40px, 6vw, 64px);
+  padding: clamp(16px, 2vw, 24px) 0 clamp(24px, 3vw, 36px);
   position: relative;
   overflow: hidden;
 }
@@ -300,35 +300,35 @@ p{ margin: 0; }
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: clamp(18px, 2.5vw, 26px);
+  gap: clamp(14px, 2vw, 20px);
 }
 .hero-copy{ display:flex; flex-direction:column; align-items:center; max-width:720px; }
-.hero-copy .kinara{ margin: 0 auto 12px; }
-.hero-copy .eyebrow-mark{ margin-bottom: 12px; }
-.hero-copy h1{ margin-bottom: 12px; }
+.hero-copy .kinara{ margin: 0 auto 8px; }
+.hero-copy .eyebrow-mark{ margin-bottom: 8px; }
+.hero-copy h1{ margin-bottom: 10px; font-size: clamp(1.9rem, 3.4vw, 2.7rem); line-height: 1.12; }
 .hero-copy .lede{
-  font-size: 1.2rem;
+  font-size: 1.05rem;
   color: var(--ink-soft);
-  max-width: 50ch;
-  margin-bottom: 20px;
+  max-width: 52ch;
+  margin-bottom: 16px;
 }
-.hero-ctas{ display:flex; gap:16px; flex-wrap:wrap; justify-content:center; }
+.hero-ctas{ display:flex; gap:14px; flex-wrap:wrap; justify-content:center; }
 
 .hero-carousel{
   position: relative;
   justify-self: center;
   width: 100%;
-  max-width: 760px;
+  max-width: 960px;
   order: -1;
 }
 .hero-carousel .frame-inner{
-  background: var(--white);
-  padding: 12px;
+  background: transparent;
+  padding: 0;
   overflow: hidden;
 }
 .hero-carousel-track{
   display:flex;
-  aspect-ratio: 16/9;
+  aspect-ratio: 5/2;
   background: var(--paper);
   transition: transform .55s var(--ease);
   touch-action: pan-y;
@@ -348,7 +348,7 @@ p{ margin: 0; }
   display:flex;
   justify-content:center;
   gap:8px;
-  margin-top:14px;
+  margin-top:8px;
 }
 .hero-carousel-dots button{
   width:7px; height:7px;
@@ -365,9 +365,9 @@ p{ margin: 0; }
   border-radius:4px;
 }
 .hero-carousel-caption{
-  margin-top: 10px;
+  margin-top: 6px;
   text-align:center;
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   color: var(--ink-soft);
   font-style: italic;
   font-family: var(--font-display);

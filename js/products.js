@@ -109,7 +109,7 @@ const PRODUCTS = [
     weave: "Printed",
     occasion: "Festive",
     tag: null,
-    sections: []
+    sections: ["bestseller"]
   },
   {
     id: "sample-06",

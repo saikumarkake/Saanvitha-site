@@ -71,7 +71,7 @@ h1,h2,h3,h4{
   letter-spacing: 0.005em;
 }
 
-h1{ font-size: clamp(2.4rem, 5vw, 4rem); line-height: 1.08; font-weight: 500; }
+h1{ font-size: clamp(2.6rem, 6vw, 4.6rem); line-height: 1.06; font-weight: 500; }
 h2{ font-size: clamp(1.8rem, 3.4vw, 2.6rem); line-height: 1.15; }
 h3{ font-size: clamp(1.3rem, 2vw, 1.55rem); line-height: 1.25; }
 
@@ -307,9 +307,9 @@ p{ margin: 0; }
 .hero-copy .eyebrow-mark{ margin-bottom: 12px; }
 .hero-copy h1{ margin-bottom: 12px; }
 .hero-copy .lede{
-  font-size: 1.12rem;
+  font-size: 1.2rem;
   color: var(--ink-soft);
-  max-width: 46ch;
+  max-width: 50ch;
   margin-bottom: 20px;
 }
 .hero-ctas{ display:flex; gap:16px; flex-wrap:wrap; justify-content:center; }
@@ -318,7 +318,7 @@ p{ margin: 0; }
   position: relative;
   justify-self: center;
   width: 100%;
-  max-width: 380px;
+  max-width: 760px;
   order: -1;
 }
 .hero-carousel .frame-inner{
@@ -330,7 +330,7 @@ p{ margin: 0; }
 }
 .hero-carousel-track{
   display:flex;
-  aspect-ratio: 4/3;
+  aspect-ratio: 16/9;
   background: var(--paper);
   transition: transform .55s var(--ease);
   touch-action: pan-y;
@@ -412,7 +412,7 @@ p{ margin: 0; }
 .rail{
   display:grid;
   grid-auto-flow: column;
-  grid-auto-columns: minmax(220px, 1fr);
+  grid-auto-columns: minmax(220px, 280px);
   gap: 20px;
   overflow-x: auto;
   padding-bottom: 12px;
@@ -915,7 +915,7 @@ p{ margin: 0; }
   .menu-toggle{ display:flex; }
 
   .hero .container{ grid-template-columns: 1fr; }
-  .hero-carousel{ max-width:280px; }
+  .hero-carousel{ max-width:100%; }
 
   .product-grid{ grid-template-columns: repeat(2,1fr); }
   .rail{ grid-auto-columns: minmax(210px, 1fr); }

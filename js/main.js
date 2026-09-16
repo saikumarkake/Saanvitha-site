@@ -215,9 +215,13 @@ function initProductDetail(){
       <div class="pdp-thumbs">
         ${gallery.map((src, i) => `<button class="${i===0?'active':''}" data-src="${src}" aria-label="${thumbLabels[i] || 'View ' + (i+1)}"><img src="${src}" alt="${thumbLabels[i] || 'Thumbnail'} of ${p.name}"></button>`).join("")}
       </div>
-      ${gallery.length > 1 ? `<p style="font-size:0.78rem;color:var(--ink-faint);margin-top:10px;">All angles shown are crops of the one photo you provided &mdash; add real additional-angle photos when you have them.</p>` : ""}
+      ${gallery.length > 1 ? `<p class="crop-note" style="font-size:0.78rem;color:var(--ink-faint);margin-top:10px;">All angles shown are crops of the one photo you provided &mdash; add real additional-angle photos when you have them.</p>` : ""}
     </div>
     <div class="pdp-info">
+      <button type="button" class="pdp-back-btn" onclick="history.length > 1 ? history.back() : (location.href='shop.html')" aria-label="Go back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 18l-6-6 6-6"/></svg>
+        Back
+      </button>
       <div class="breadcrumb"><a href="index.html">Home</a> / <a href="shop.html">Shop</a> / ${p.name}</div>
       <h1>${p.name}</h1>
       <div class="pdp-price">${formatPrice(p.price)}</div>

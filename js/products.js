@@ -56,8 +56,8 @@ const PRODUCTS = [
     name: "Rani Pink Zari-Border Handloom Saree",
     price: null,               // add real price
     images: [
-      "images/featured/rani-pink-zari-saree.png",
-      "images/featured/real02-border.png"
+      "images/featured/rani-pink-zari-saree.jpg",
+      "images/featured/real02-border.jpg"
     ],
     imageLabels: ["Full drape", "Border detail (cropped, low source resolution)"],
     colour: "Rani Pink",
@@ -84,11 +84,11 @@ const PRODUCTS = [
     name: "Olive Green Zari-Stripe Saree with Maroon Pallu",
     price: null,
     images: [
-      "images/featured/green-red-zari-saree.png",
-      "images/featured/real03-border.png",
-      "images/featured/real03-pallu.png",
-      "images/featured/real03-blouse.png",
-      "images/featured/real03-detail.png"
+      "images/featured/green-red-zari-saree.jpg",
+      "images/featured/real03-border.jpg",
+      "images/featured/real03-pallu.jpg",
+      "images/featured/real03-blouse.jpg",
+      "images/featured/real03-detail.jpg"
     ],
     imageLabels: ["Full drape (flat-lay)", "Border detail", "Pallu detail", "Blouse piece", "Fabric detail"],
     colour: "Olive Green / Maroon",
@@ -115,10 +115,10 @@ const PRODUCTS = [
     name: "Mustard Gold Zari Saree with Elephant-Motif Border",
     price: null,
     images: [
-      "images/featured/mustard-gold-zari-saree.png",
-      "images/featured/real04-border.png",
-      "images/featured/real04-pallu.png",
-      "images/featured/real04-detail.png"
+      "images/featured/mustard-gold-zari-saree.jpg",
+      "images/featured/real04-border.jpg",
+      "images/featured/real04-pallu.jpg",
+      "images/featured/real04-detail.jpg"
     ],
     imageLabels: ["Full drape (flat-lay)", "Border detail", "Pallu / folded corner detail", "Fabric detail"],
     colour: "Mustard Gold / Orange",
@@ -145,10 +145,10 @@ const PRODUCTS = [
     name: "Maroon & Gold Zari Jaal Saree with Green Trim",
     price: null,
     images: [
-      "images/featured/maroon-gold-zari-saree.png",
-      "images/featured/real05-border.png",
-      "images/featured/real05-pallu.png",
-      "images/featured/real05-detail.png"
+      "images/featured/maroon-gold-zari-saree.jpg",
+      "images/featured/real05-border.jpg",
+      "images/featured/real05-pallu.jpg",
+      "images/featured/real05-detail.jpg"
     ],
     imageLabels: ["Pleats & overview", "Border detail", "Pallu motif detail", "Fabric detail"],
     colour: "Maroon / Gold",
@@ -175,10 +175,10 @@ const PRODUCTS = [
     name: "Teal Zari Saree with Contrast Purple Pallu",
     price: null,
     images: [
-      "images/featured/teal-purple-zari-saree.png",
-      "images/featured/real06-border.png",
-      "images/featured/real06-pallu.png",
-      "images/featured/real06-detail.png"
+      "images/featured/teal-purple-zari-saree.jpg",
+      "images/featured/real06-border.jpg",
+      "images/featured/real06-pallu.jpg",
+      "images/featured/real06-detail.jpg"
     ],
     imageLabels: ["Full drape (styled)", "Border detail", "Pallu detail", "Fabric detail"],
     colour: "Teal / Purple",

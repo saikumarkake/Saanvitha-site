@@ -219,7 +219,10 @@ function initProductDetail(){
       <div class="pdp-thumbs">
         ${gallery.map((src, i) => `<button class="${i===0?'active':''}" data-src="${src}" aria-label="${thumbLabels[i] || 'View ' + (i+1)}"><img src="${src}" alt="${thumbLabels[i] || 'Thumbnail'} of ${p.name}"></button>`).join("")}
       </div>
-      ${gallery.length > 1 ? `<p class="crop-note" style="font-size:0.78rem;color:var(--ink-faint);margin-top:10px;">All angles shown are crops of the one photo you provided &mdash; add real additional-angle photos when you have them.</p>` : ""}
+      ${gallery.length > 1 ? (p.isReal
+        ? `<p class="crop-note" style="font-size:0.78rem;color:var(--ink-faint);margin-top:10px;">All angles shown are crops of the one photo you provided &mdash; add real additional-angle photos when you have them.</p>`
+        : `<p class="crop-note" style="font-size:0.78rem;color:var(--ink-faint);margin-top:10px;">Generated placeholder artwork for layout preview only &mdash; not a real product photo. Replace with your own photos before launch.</p>`
+      ) : ""}
     </div>
     <div class="pdp-info">
       <div class="breadcrumb"><a href="index.html">Home</a> / <a href="shop.html">Shop</a> / ${p.name}</div>
@@ -230,6 +233,10 @@ function initProductDetail(){
         <tr><th>Fabric</th><td class="${p.fabric?'':'ph'}">${val(p.fabric)}${p.fabricNote ? `<br><span class="ph" style="font-size:0.78rem;">${p.fabricNote}</span>` : ""}</td></tr>
         <tr><th>Weave</th><td class="${p.weave?'':'ph'}">${val(p.weave)}</td></tr>
         <tr><th>Colour</th><td>${val(p.colour)}</td></tr>
+        <tr><th>Pattern</th><td class="${p.pattern?'':'ph'}">${val(p.pattern)}</td></tr>
+        <tr><th>Border</th><td class="${p.border?'':'ph'}">${val(p.border)}</td></tr>
+        <tr><th>Pallu</th><td class="${p.pallu?'':'ph'}">${val(p.pallu)}</td></tr>
+        <tr><th>Occasion</th><td class="${p.occasion?'':'ph'}">${val(p.occasion)}</td></tr>
         <tr><th>Saree length</th><td class="${p.length?'':'ph'}">${val(p.length)}</td></tr>
         <tr><th>Blouse</th><td class="${p.blouse?'':'ph'}">${val(p.blouse)}</td></tr>
       </table>
@@ -244,7 +251,7 @@ function initProductDetail(){
       <div class="accordion">
         <details>
           <summary>Description</summary>
-          <div class="acc-body ${p.isReal ? 'ph' : ''}">${p.isReal ? "A detailed description of this saree hasn't been added yet — including its craft story, motif inspiration and styling notes." : "A quiet, versatile weave built for both festive wear and everyday elegance. Pair with a contrast blouse for a modern look, or keep it classic with a matching one."}</div>
+          <div class="acc-body ${p.isReal && !p.description ? 'ph' : ''}">${p.description ? p.description : (p.isReal ? "A detailed description of this saree hasn't been added yet — including its craft story, motif inspiration and styling notes." : "A quiet, versatile weave built for both festive wear and everyday elegance. Pair with a contrast blouse for a modern look, or keep it classic with a matching one.")}</div>
         </details>
         <details>
           <summary>Care instructions</summary>

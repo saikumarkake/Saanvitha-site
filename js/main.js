@@ -201,7 +201,7 @@ function initProductDetail(){
 
   const val = (v) => v ? v : `<span class="ph">Add detail before publishing</span>`;
   const gallery = p.images && p.images.length ? p.images : (p.image ? [p.image] : []);
-  const thumbLabels = ["Full drape", "Border detail", "Pallu detail", "View"];
+  const thumbLabels = ["Full drape", "Border detail", "Pallu detail", "Blouse", "Fabric detail"];
   const mediaMain = gallery.length
     ? `<img src="${gallery[0]}" alt="${p.name}" id="pdp-main-img">`
     : `<div class="placeholder-media" id="pdp-main-img">
@@ -217,9 +217,9 @@ function initProductDetail(){
     <div class="pdp-gallery">
       <div class="pdp-main-media">${mediaMain}</div>
       <div class="pdp-thumbs">
-        ${gallery.map((src, i) => `<button class="${i===0?'active':''}" data-src="${src}" aria-label="${thumbLabels[i] || 'View ' + (i+1)}"><img src="${src}" alt="${thumbLabels[i] || 'Thumbnail'} of ${p.name}"></button>`).join("")}
+        ${gallery.map((src, i) => `<button class="${i===0?'active':''}" data-src="${src}" aria-label="${(p.imageLabels && p.imageLabels[i]) || thumbLabels[i] || 'View ' + (i+1)}"><img src="${src}" alt="${(p.imageLabels && p.imageLabels[i]) || thumbLabels[i] || 'Thumbnail'} of ${p.name}"></button>`).join("")}
       </div>
-      ${gallery.length > 1 ? (p.isReal
+      ${gallery.length > 1 && !p.photoNote ? (p.isReal
         ? `<p class="crop-note" style="font-size:0.78rem;color:var(--ink-faint);margin-top:10px;">All angles shown are crops of the one photo you provided &mdash; add real additional-angle photos when you have them.</p>`
         : `<p class="crop-note" style="font-size:0.78rem;color:var(--ink-faint);margin-top:10px;">Generated placeholder artwork for layout preview only &mdash; not a real product photo. Replace with your own photos before launch.</p>`
       ) : ""}

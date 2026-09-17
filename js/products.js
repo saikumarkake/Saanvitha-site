@@ -56,8 +56,10 @@ const PRODUCTS = [
     name: "Rani Pink Zari-Border Handloom Saree",
     price: null,               // add real price
     images: [
-      "images/featured/rani-pink-zari-saree.png"
+      "images/featured/rani-pink-zari-saree.png",
+      "images/featured/real02-border.png"
     ],
+    imageLabels: ["Full drape", "Border detail (cropped, low source resolution)"],
     colour: "Rani Pink",
     fabric: "Handloom Weave",
     fabricNote: "Placeholder name — swap for the real fabric once confirmed",
@@ -74,7 +76,7 @@ const PRODUCTS = [
     tag: "Featured",
     badgeColour: "gold",
     sections: ["featured"],
-    photoNote: "Only one photo currently on file for this saree, and it's lower resolution than the others — a sharper, well-lit reshoot (full drape, border close-up, pallu, blouse) will make this listing much stronger."
+    photoNote: "This photo is quite low-resolution, so only 2 useful angles could be cropped from it without looking blurry — a sharper, well-lit reshoot (full drape, border, pallu, blouse) will make this listing much stronger."
   },
   {
     id: "real-03",
@@ -82,8 +84,13 @@ const PRODUCTS = [
     name: "Olive Green Zari-Stripe Saree with Maroon Pallu",
     price: null,
     images: [
-      "images/featured/green-red-zari-saree.png"
+      "images/featured/green-red-zari-saree.png",
+      "images/featured/real03-border.png",
+      "images/featured/real03-pallu.png",
+      "images/featured/real03-blouse.png",
+      "images/featured/real03-detail.png"
     ],
+    imageLabels: ["Full drape (flat-lay)", "Border detail", "Pallu detail", "Blouse piece", "Fabric detail"],
     colour: "Olive Green / Maroon",
     fabric: "Handloom Weave",
     fabricNote: "Placeholder name — swap for the real fabric once confirmed",
@@ -100,7 +107,7 @@ const PRODUCTS = [
     tag: "Featured",
     badgeColour: "gold",
     sections: ["featured"],
-    photoNote: "Only one flat-lay photo currently on file — add a draped/worn shot and a closer border and blouse detail when you can."
+    photoNote: "All angles shown are crops from the one flat-lay photo you provided — add a real draped/worn shot when you can, for a truer sense of fall and drape."
   },
   {
     id: "real-04",
@@ -108,8 +115,12 @@ const PRODUCTS = [
     name: "Mustard Gold Zari Saree with Elephant-Motif Border",
     price: null,
     images: [
-      "images/featured/mustard-gold-zari-saree.png"
+      "images/featured/mustard-gold-zari-saree.png",
+      "images/featured/real04-border.png",
+      "images/featured/real04-pallu.png",
+      "images/featured/real04-detail.png"
     ],
+    imageLabels: ["Full drape (flat-lay)", "Border detail", "Pallu / folded corner detail", "Fabric detail"],
     colour: "Mustard Gold / Orange",
     fabric: "Handloom Weave",
     fabricNote: "Placeholder name — swap for the real fabric once confirmed",
@@ -119,14 +130,14 @@ const PRODUCTS = [
     pallu: "Orange-red pallu edged in green and pink piping, with the same gold zari work",
     occasion: null,             // add suggested occasion
     length: null,
-    blouse: "Matching gold-toned blouse piece included (as shown folded with the saree)",
+    blouse: null,                // folded corner in the photo may be the pallu reverse rather than a separate blouse piece — confirm and add a real blouse photo
     description: "A mustard-gold handloom saree with a fine, all-over zari diamond texture and a wide border worked in rows of elephant and floral roundel motifs. The pallu shifts to a warmer orange-red, finished with slim green and pink piping for a subtle contrast against all that gold.",
     care: "Dry clean is recommended to protect the border colour and any metallic-look thread. If you choose to hand wash, use cold water with a mild detergent, wash it separately from other clothes, and don't wring it. Dry flat or on a padded hanger, out of direct sunlight, then iron on the reverse side on a low-to-medium setting with a thin cloth between the iron and the fabric. Store folded in a breathable cotton or muslin cloth, and refold along different lines every few months to avoid permanent crease marks.",
     shipping: "Orders are shipped within 3&ndash;5 business days of confirmation, using a trusted courier partner, and tracking details are shared with you on WhatsApp once the order is dispatched. Unused, unworn sarees with original tags and packaging intact can be returned within 7 days of delivery. To start a return or exchange, message us on WhatsApp with your order details and reason &mdash; we'll take it from there.",
     tag: "Featured",
     badgeColour: "gold",
     sections: ["featured"],
-    photoNote: "Only one flat-lay photo currently on file — add a draped/worn shot and closer border, pallu and blouse detail when you can."
+    photoNote: "All angles shown are crops from the one flat-lay photo you provided — the folded corner may be the pallu reverse rather than a separate blouse piece, so please confirm and add a real blouse photo when you can."
   },
   {
     id: "real-05",
@@ -134,8 +145,12 @@ const PRODUCTS = [
     name: "Maroon & Gold Zari Jaal Saree with Green Trim",
     price: null,
     images: [
-      "images/featured/maroon-gold-zari-saree.png"
+      "images/featured/maroon-gold-zari-saree.png",
+      "images/featured/real05-border.png",
+      "images/featured/real05-pallu.png",
+      "images/featured/real05-detail.png"
     ],
+    imageLabels: ["Pleats & overview", "Border detail", "Pallu motif detail", "Fabric detail"],
     colour: "Maroon / Gold",
     fabric: "Handloom Weave",
     fabricNote: "Placeholder name — swap for the real fabric once confirmed",
@@ -152,7 +167,7 @@ const PRODUCTS = [
     tag: "Featured",
     badgeColour: "gold",
     sections: ["featured"],
-    photoNote: "Only one close-up pleat photo currently on file — add a full drape shot, a flat border/pallu view and a blouse photo when you can."
+    photoNote: "All angles shown are crops from the one close-up pleat photo you provided — it's already a detail shot, so there's no true full-drape or blouse photo yet. Add those when you can."
   },
   {
     id: "real-06",
@@ -160,8 +175,12 @@ const PRODUCTS = [
     name: "Teal Zari Saree with Contrast Purple Pallu",
     price: null,
     images: [
-      "images/featured/teal-purple-zari-saree.png"
+      "images/featured/teal-purple-zari-saree.png",
+      "images/featured/real06-border.png",
+      "images/featured/real06-pallu.png",
+      "images/featured/real06-detail.png"
     ],
+    imageLabels: ["Full drape (styled)", "Border detail", "Pallu detail", "Fabric detail"],
     colour: "Teal / Purple",
     fabric: "Handloom Weave",
     fabricNote: "Placeholder name — swap for the real fabric once confirmed",
@@ -178,7 +197,7 @@ const PRODUCTS = [
     tag: "Featured",
     badgeColour: "gold",
     sections: ["featured"],
-    photoNote: "Only one styled drape photo currently on file — add a flat full-saree view and closer border/pallu/blouse detail when you can."
+    photoNote: "All angles shown are crops from the one styled drape photo you provided — it's shown on a form with no blouse attached, so add a flat full-saree view and a real blouse photo when you can."
   },
   {
     id: "sample-04",

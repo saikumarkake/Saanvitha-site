@@ -223,6 +223,7 @@ function initProductDetail(){
         ? `<p class="crop-note" style="font-size:0.78rem;color:var(--ink-faint);margin-top:10px;">All angles shown are crops of the one photo you provided &mdash; add real additional-angle photos when you have them.</p>`
         : `<p class="crop-note" style="font-size:0.78rem;color:var(--ink-faint);margin-top:10px;">Generated placeholder artwork for layout preview only &mdash; not a real product photo. Replace with your own photos before launch.</p>`
       ) : ""}
+      ${p.photoNote ? `<p class="crop-note" style="font-size:0.78rem;color:var(--ink-faint);margin-top:10px;">${p.photoNote}</p>` : ""}
     </div>
     <div class="pdp-info">
       <div class="breadcrumb"><a href="index.html">Home</a> / <a href="shop.html">Shop</a> / ${p.name}</div>

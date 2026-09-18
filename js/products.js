@@ -250,29 +250,121 @@ const PRODUCTS = [
     sections: ["bestseller"]
   },
   {
-    id: "sample-06",
-    isReal: false,
-    name: "Sample Saree — Chanderi Weave",
-    price: 5400,
+    id: "real-07",
+    isReal: true,
+    name: "Royal Blue Paithani-Style Saree with Peacock Pallu",
+    price: null,               // add real price
     images: [
-      "images/samples/sample-06-full.svg",
-      "images/samples/sample-06-border.svg",
-      "images/samples/sample-06-pallu.svg"
+      "images/newarrivals/blue-orange-paithani-saree.jpg",
+      "images/newarrivals/n1-border.jpg",
+      "images/newarrivals/n1-pallu.jpg",
+      "images/newarrivals/n1-detail.jpg"
     ],
-    colour: "Blush",
-    fabric: "Chanderi",
-    weave: "Zari border",
-    pattern: "Sheer, lightly textured weave with a subtle sheen",
-    border: "Maroon-toned zari border",
-    pallu: "Zari-bordered pallu in matching blush tone",
-    occasion: "Wedding",
-    length: "5.5 m saree + 0.8 m blouse piece",
-    blouse: "Unstitched matching blouse piece included",
-    description: "A soft blush chanderi-weave saree with a delicate sheen and a maroon-toned zari border. Sheer and lightweight, suited to daytime wedding functions. This is placeholder demo content shown only to preview the site layout — not a real product yet.",
-    care: "Dry clean only; store folded in muslin cloth. (Sample care text for layout preview.)",
-    shipping: "Ships within 3&ndash;5 business days; 7-day return on unworn pieces with tags intact. (Sample shipping text for layout preview.)",
+    imageLabels: ["Full drape (styled)", "Border detail", "Pallu detail", "Fabric detail"],
+    colour: "Royal Blue / Orange",
+    fabric: "Handloom Weave",
+    fabricNote: "Placeholder name — swap for the real fabric once confirmed",
+    weave: null,
+    pattern: "Small woven floral booti scattered across a royal blue ground",
+    border: "Wide orange-gold border with a fine woven check and temple-edge trim",
+    pallu: "Orange-gold pallu worked in a colourful woven peacock and floral motif",
+    occasion: null,             // add suggested occasion
+    length: null,
+    blouse: null,                // not visible in this photo — add a real blouse photo
+    description: "A royal blue handloom saree scattered with small woven floral booti, paired with a wide orange-gold border in a fine check weave. The pallu is the standout — a colourful, densely woven peacock and floral motif that lifts the whole drape. Styled here on a form to show the fall of the border and pallu together.",
+    care: "Dry clean is recommended to protect the border colour and any metallic-look thread. If you choose to hand wash, use cold water with a mild detergent, wash it separately from other clothes, and don't wring it. Dry flat or on a padded hanger, out of direct sunlight, then iron on the reverse side on a low-to-medium setting with a thin cloth between the iron and the fabric. Store folded in a breathable cotton or muslin cloth, and refold along different lines every few months to avoid permanent crease marks.",
+    shipping: "Orders are shipped within 3&ndash;5 business days of confirmation, using a trusted courier partner, and tracking details are shared with you on WhatsApp once the order is dispatched. Unused, unworn sarees with original tags and packaging intact can be returned within 7 days of delivery. To start a return or exchange, message us on WhatsApp with your order details and reason &mdash; we'll take it from there.",
     tag: "New",
-    sections: ["new"]
+    sections: ["new"],
+    photoNote: "All angles shown are crops from the one styled photo you provided — no blouse is visible in it (shown on a bare-shoulder form), so add a real blouse photo when you can."
+  },
+  {
+    id: "real-08",
+    isReal: true,
+    name: "Rani Pink Paithani-Style Saree with Parrot Pallu",
+    price: null,
+    images: [
+      "images/newarrivals/pink-gold-parrot-saree.jpg",
+      "images/newarrivals/n2-border.jpg",
+      "images/newarrivals/n2-pallu.jpg",
+      "images/newarrivals/n2-detail.jpg"
+    ],
+    imageLabels: ["Full drape (flat-lay)", "Border detail", "Pallu detail", "Fabric detail"],
+    colour: "Rani Pink / Gold",
+    fabric: "Handloom Weave",
+    fabricNote: "Placeholder name — swap for the real fabric once confirmed",
+    weave: null,
+    pattern: "Rani pink ground scattered with small gold sequin-like dots",
+    border: "Gold zari border with a delicate woven bird-and-branch motif",
+    pallu: "Gold pallu with a vivid, densely woven multicoloured parrot and floral-branch motif",
+    occasion: "Festive / Wedding wear",   // inferred from the pallu detailing — confirm before publishing
+    length: null,
+    blouse: null,                // not visible in this photo — add a real blouse photo
+    description: "A vivid rani pink handloom saree with small gold dots scattered across the body and a gold border traced with a delicate bird motif. The pallu is richly woven with colourful parrots perched on a flowering branch — a striking, statement finish to an otherwise clean, jewel-toned drape.",
+    care: "Dry clean is recommended to protect the border colour and any metallic-look thread. If you choose to hand wash, use cold water with a mild detergent, wash it separately from other clothes, and don't wring it. Dry flat or on a padded hanger, out of direct sunlight, then iron on the reverse side on a low-to-medium setting with a thin cloth between the iron and the fabric. Store folded in a breathable cotton or muslin cloth, and refold along different lines every few months to avoid permanent crease marks.",
+    shipping: "Orders are shipped within 3&ndash;5 business days of confirmation, using a trusted courier partner, and tracking details are shared with you on WhatsApp once the order is dispatched. Unused, unworn sarees with original tags and packaging intact can be returned within 7 days of delivery. To start a return or exchange, message us on WhatsApp with your order details and reason &mdash; we'll take it from there.",
+    tag: "New",
+    sections: ["new"],
+    photoNote: "All angles shown are crops from the one flat-lay photo you provided — add a draped/worn shot and a real blouse photo when you can."
+  },
+  {
+    id: "real-09",
+    isReal: true,
+    name: "Black Handloom Saree with Gold Peacock Pallu",
+    price: null,
+    images: [
+      "images/newarrivals/black-peacock-saree.jpg",
+      "images/newarrivals/n3-border.jpg",
+      "images/newarrivals/n3-pallu.jpg",
+      "images/newarrivals/n3-detail.jpg"
+    ],
+    imageLabels: ["Full drape (flat-lay)", "Border detail", "Pallu detail", "Fabric detail"],
+    colour: "Black / Gold",
+    fabric: "Handloom Weave",
+    fabricNote: "Placeholder name — swap for the real fabric once confirmed",
+    weave: null,
+    pattern: "Black ground scattered with small gold booti dots, finished with a row of woven peacock motifs above the border",
+    border: "Slim red border with a golden inner band",
+    pallu: "Gold pallu worked in repeating rows of blue and purple peacock motifs, framed by small diamond accents",
+    occasion: null,             // add suggested occasion
+    length: null,
+    blouse: null,                // not visible in this photo — add a real blouse photo
+    description: "A black handloom saree scattered with fine gold booti and a row of woven peacock motifs along the top of the border. The gold pallu carries the peacock theme further, worked in repeating rows of blue and purple against a warm gold ground, with a slim red border tying the two together.",
+    care: "Dry clean is recommended to protect the border colour and any metallic-look thread. If you choose to hand wash, use cold water with a mild detergent, wash it separately from other clothes, and don't wring it. Dry flat or on a padded hanger, out of direct sunlight, then iron on the reverse side on a low-to-medium setting with a thin cloth between the iron and the fabric. Store folded in a breathable cotton or muslin cloth, and refold along different lines every few months to avoid permanent crease marks.",
+    shipping: "Orders are shipped within 3&ndash;5 business days of confirmation, using a trusted courier partner, and tracking details are shared with you on WhatsApp once the order is dispatched. Unused, unworn sarees with original tags and packaging intact can be returned within 7 days of delivery. To start a return or exchange, message us on WhatsApp with your order details and reason &mdash; we'll take it from there.",
+    tag: "New",
+    sections: ["new"],
+    photoNote: "All angles shown are crops from the one flat-lay photo you provided — add a draped/worn shot and a real blouse photo when you can."
+  },
+  {
+    id: "real-10",
+    isReal: true,
+    name: "Coral Pink Saree with Floral Paithani Border",
+    price: null,
+    images: [
+      "images/newarrivals/pink-red-floral-border-saree.jpg",
+      "images/newarrivals/n4-border.jpg",
+      "images/newarrivals/n4-pallu.jpg",
+      "images/newarrivals/n4-blouse.jpg",
+      "images/newarrivals/n4-detail.jpg"
+    ],
+    imageLabels: ["Full drape (styled)", "Border detail", "Pallu detail", "Blouse piece", "Fabric detail"],
+    colour: "Coral Pink / Gold",
+    fabric: "Handloom Weave",
+    fabricNote: "Placeholder name — swap for the real fabric once confirmed",
+    weave: null,
+    pattern: "Plain coral-pink body with a smooth, unembellished field",
+    border: "Wide gold border woven with a colourful floral vine (white, orange and purple blooms)",
+    pallu: "Orange-gold pallu in a fine striped weave, edged with the same floral vine border",
+    occasion: "Festive / Wedding wear",   // inferred from the border detailing — confirm before publishing
+    length: null,
+    blouse: "Rani pink cap-sleeve blouse shown styled with the saree (blouse colour is a deeper pink than the saree body — confirm if this exact blouse is included or shown for styling only)",
+    description: "A coral pink handloom saree with a clean, unbroken field of colour, framed by a wide gold border richly woven with a white, orange and purple floral vine. The pallu shifts to a warmer orange-gold in a fine striped weave, edged in the same floral border. Styled here with a rani pink blouse for contrast.",
+    care: "Dry clean is recommended to protect the border colour and any metallic-look thread. If you choose to hand wash, use cold water with a mild detergent, wash it separately from other clothes, and don't wring it. Dry flat or on a padded hanger, out of direct sunlight, then iron on the reverse side on a low-to-medium setting with a thin cloth between the iron and the fabric. Store folded in a breathable cotton or muslin cloth, and refold along different lines every few months to avoid permanent crease marks.",
+    shipping: "Orders are shipped within 3&ndash;5 business days of confirmation, using a trusted courier partner, and tracking details are shared with you on WhatsApp once the order is dispatched. Unused, unworn sarees with original tags and packaging intact can be returned within 7 days of delivery. To start a return or exchange, message us on WhatsApp with your order details and reason &mdash; we'll take it from there.",
+    tag: "New",
+    sections: ["new"],
+    photoNote: "All angles shown are crops from the one styled photo you provided — please confirm whether the pink blouse shown is included with this saree or was used for styling only."
   },
   {
     id: "sample-07",

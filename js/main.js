@@ -82,7 +82,53 @@ function renderGrid(container, products){
   container.innerHTML = products.map(productCardHTML).join("");
 }
 
-// ---- Shop page filtering ----
+// ---- Site search (header icon + slide-down bar) ----
+function initSiteSearch(){
+  const toggle = document.querySelector("#search-toggle");
+  const bar = document.querySelector("#site-search-bar");
+  const input = document.querySelector("#site-search-input");
+  const closeBtn = document.querySelector("#search-close");
+  if(!toggle || !bar || !input) return;
+
+  const params = new URLSearchParams(location.search);
+  const initialQuery = params.get("q") || "";
+
+  function openBar(prefill){
+    bar.classList.add("open");
+    toggle.classList.add("active");
+    toggle.setAttribute("aria-expanded", "true");
+    if(prefill != null) input.value = prefill;
+    setTimeout(() => input.focus(), 180);
+  }
+  function closeBar(){
+    bar.classList.remove("open");
+    toggle.classList.remove("active");
+    toggle.setAttribute("aria-expanded", "false");
+  }
+
+  toggle.addEventListener("click", () => {
+    bar.classList.contains("open") ? closeBar() : openBar();
+  });
+  closeBtn.addEventListener("click", () => { input.value = ""; closeBar(); });
+
+  input.addEventListener("keydown", (e) => {
+    if(e.key === "Escape"){ input.value = ""; closeBar(); }
+    if(e.key !== "Enter") return;
+    const term = input.value.trim();
+    // On the shop page, filter in place; everywhere else, jump to Shop with the query.
+    if(window.__shopSearch){
+      window.__shopSearch(term);
+      closeBar();
+    } else if(term){
+      location.href = "shop.html?q=" + encodeURIComponent(term);
+    }
+  });
+
+  // Arriving from another page with ?q=... — open pre-filled so the person sees what they searched.
+  if(initialQuery) openBar(initialQuery);
+}
+
+
 function initShop(){
   const grid = document.querySelector("#shop-grid");
   if(!grid) return;
@@ -90,15 +136,29 @@ function initShop(){
   const SECTION_LABELS = { featured: "Featured sarees", new: "New arrivals", bestseller: "Best sellers" };
   const params = new URLSearchParams(location.search);
   const initialSection = params.get("section");
+  const initialQuery = params.get("q") || "";
 
-  const state = { colour: new Set(), fabric: new Set(), weave: new Set(), occasion: new Set(), maxPrice: 10000, sort: "featured", section: (initialSection && SECTION_LABELS[initialSection]) ? initialSection : null };
+  const state = { colour: new Set(), fabric: new Set(), weave: new Set(), occasion: new Set(), maxPrice: 10000, sort: "featured", section: (initialSection && SECTION_LABELS[initialSection]) ? initialSection : null, search: initialQuery.trim() };
 
   function renderSectionNote(){
     const note = document.querySelector("#section-filter-note");
     if(!note) return;
-    if(state.section){
-      note.innerHTML = `Showing: <strong>${SECTION_LABELS[state.section]}</strong> &middot; <a href="shop.html">View all sarees</a>`;
+    const parts = [];
+    if(state.section) parts.push(`Showing: <strong>${SECTION_LABELS[state.section]}</strong>`);
+    if(state.search) parts.push(`Results for &ldquo;<strong>${state.search}</strong>&rdquo;`);
+    if(parts.length){
+      note.innerHTML = parts.join(" &middot; ") + ` &middot; <a href="shop.html" id="clear-search-note">Clear</a>`;
       note.style.display = "block";
+      const clearNote = document.querySelector("#clear-search-note");
+      if(clearNote) clearNote.addEventListener("click", (e) => {
+        e.preventDefault();
+        state.section = null; state.search = "";
+        const input = document.querySelector("#site-search-input");
+        if(input) input.value = "";
+        history.replaceState(null, "", "shop.html");
+        renderSectionNote();
+        apply();
+      });
     } else {
       note.style.display = "none";
     }
@@ -145,6 +205,9 @@ function initShop(){
       state.colour.clear(); state.fabric.clear(); state.weave.clear(); state.occasion.clear();
       state.maxPrice = 10000;
       state.section = null;
+      state.search = "";
+      const searchInput = document.querySelector("#site-search-input");
+      if(searchInput) searchInput.value = "";
       history.replaceState(null, "", "shop.html");
       document.querySelectorAll("[data-filter]").forEach(i => i.checked = false);
       if(priceRange){ priceRange.value = 10000; priceOut.textContent = formatPrice(10000); }
@@ -154,6 +217,7 @@ function initShop(){
   }
 
   function apply(){
+    const term = state.search.trim().toLowerCase();
     let items = PRODUCTS.filter(p => {
       if(state.section && !(p.sections||[]).includes(state.section)) return false;
       if(state.colour.size && !state.colour.has(p.colour)) return false;
@@ -162,6 +226,10 @@ function initShop(){
       if(state.occasion.size && !state.occasion.has(p.occasion)) return false;
       const price = p.price ?? 0;
       if(p.price != null && price > state.maxPrice) return false;
+      if(term){
+        const haystack = [p.name, p.colour, p.fabric, p.weave, p.occasion, p.pattern].filter(Boolean).join(" ").toLowerCase();
+        if(!haystack.includes(term)) return false;
+      }
       return true;
     });
     if(state.sort === "price-asc") items = items.slice().sort((a,b) => (a.price??0)-(b.price??0));
@@ -170,6 +238,14 @@ function initShop(){
     const count = document.querySelector("#result-count");
     if(count) count.textContent = `${items.length} saree${items.length===1?"":"s"}`;
   }
+
+  // Exposed so the header search bar can filter this page in place instead of navigating away.
+  window.__shopSearch = function(term){
+    state.search = term;
+    history.replaceState(null, "", term ? ("shop.html?q=" + encodeURIComponent(term)) : "shop.html");
+    renderSectionNote();
+    apply();
+  };
 
   renderSectionNote();
   apply();
@@ -446,4 +522,5 @@ document.addEventListener("DOMContentLoaded", () => {
   initShop();
   initProductDetail();
   initHeroCarousel();
+  initSiteSearch();
 });

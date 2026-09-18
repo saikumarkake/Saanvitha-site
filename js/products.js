@@ -22,10 +22,34 @@
    demo taxonomy only, not claims about real products.
    ========================================================= */
 
+/* =========================================================
+   Article Number scheme
+   ---------------------------------------------------------
+   Each saree gets one Article No. based on the primary
+   section/collection it belongs to, numbered sequentially
+   within that prefix, starting at 00001:
+     FS = Featured Sarees      NW = New Arrivals
+     BS = Best Sellers         WB = Wedding & Bridal
+     FE = Festival Edit        EC = Everyday Cottons
+     SW = Silk Weaves
+   (WB / FE / EC / SW aren't populated with real products
+   yet — those collection cards on the Collections page are
+   still "Add photo" placeholders — so no numbers are issued
+   under those prefixes until real sarees are added to them.)
+
+   Colour variants: if a saree is later added in another
+   colour but is the SAME model/pattern/design/style, give it
+   the SAME base Article No. with a colour suffix, e.g.
+   FS00001-RD (Red), FS00001-BL (Blue), FS00001-GN (Green) —
+   so shoppers can see at a glance it's one design, several
+   colourways. None of the current sarees are colour variants
+   of each other, so no suffixes are in use yet.
+   ========================================================= */
 const PRODUCTS = [
   {
     id: "real-01",
     isReal: true,
+    articleNo: "FS00001",
     name: "Gold-Tone Floral Motif Saree with Rani Pink Border",
     price: null,               // add real price
     images: [
@@ -53,6 +77,7 @@ const PRODUCTS = [
   {
     id: "real-02",
     isReal: true,
+    articleNo: "FS00002",
     name: "Rani Pink Zari-Border Handloom Saree",
     price: null,               // add real price
     images: [
@@ -81,6 +106,7 @@ const PRODUCTS = [
   {
     id: "real-03",
     isReal: true,
+    articleNo: "FS00003",
     name: "Olive Green Zari-Stripe Saree with Maroon Pallu",
     price: null,
     images: [
@@ -112,6 +138,7 @@ const PRODUCTS = [
   {
     id: "real-04",
     isReal: true,
+    articleNo: "FS00004",
     name: "Mustard Gold Zari Saree with Elephant-Motif Border",
     price: null,
     images: [
@@ -142,6 +169,7 @@ const PRODUCTS = [
   {
     id: "real-05",
     isReal: true,
+    articleNo: "FS00005",
     name: "Maroon & Gold Zari Jaal Saree with Green Trim",
     price: null,
     images: [
@@ -172,6 +200,7 @@ const PRODUCTS = [
   {
     id: "real-06",
     isReal: true,
+    articleNo: "FS00006",
     name: "Teal Zari Saree with Contrast Purple Pallu",
     price: null,
     images: [
@@ -202,6 +231,7 @@ const PRODUCTS = [
   {
     id: "sample-04",
     isReal: false,
+    articleNo: "BS00001",
     name: "Sample Saree — Linen Weave",
     price: 3200,
     images: [
@@ -227,6 +257,7 @@ const PRODUCTS = [
   {
     id: "sample-05",
     isReal: false,
+    articleNo: "BS00002",
     name: "Sample Saree — Georgette Weave",
     price: 3900,
     images: [
@@ -252,6 +283,7 @@ const PRODUCTS = [
   {
     id: "real-07",
     isReal: true,
+    articleNo: "NW00001",
     name: "Royal Blue Paithani-Style Saree with Peacock Pallu",
     price: null,               // add real price
     images: [
@@ -281,6 +313,7 @@ const PRODUCTS = [
   {
     id: "real-08",
     isReal: true,
+    articleNo: "NW00002",
     name: "Rani Pink Paithani-Style Saree with Parrot Pallu",
     price: null,
     images: [
@@ -310,6 +343,7 @@ const PRODUCTS = [
   {
     id: "real-09",
     isReal: true,
+    articleNo: "NW00003",
     name: "Black Handloom Saree with Gold Peacock Pallu",
     price: null,
     images: [
@@ -339,6 +373,7 @@ const PRODUCTS = [
   {
     id: "real-10",
     isReal: true,
+    articleNo: "NW00004",
     name: "Coral Pink Saree with Floral Paithani Border",
     price: null,
     images: [

@@ -56,6 +56,7 @@ function productCardHTML(p){
     </a>
     <div class="card-body">
       <h3><a href="product.html?id=${p.id}">${p.name}</a></h3>
+      ${p.articleNo ? `<div class="card-sku">Art. No. ${p.articleNo}</div>` : ""}
       <div class="card-price">${formatPrice(p.price)}</div>
       <div class="card-meta">
         <div><span class="label">Fabric</span><span class="value">${fabric}</span></div>
@@ -304,9 +305,11 @@ function initProductDetail(){
     <div class="pdp-info">
       <div class="breadcrumb"><a href="index.html">Home</a> / <a href="shop.html">Shop</a> / ${p.name}</div>
       <h1>${p.name}</h1>
+      ${p.articleNo ? `<div class="pdp-sku">Art. No. ${p.articleNo}</div>` : ""}
       <div class="pdp-price">${formatPrice(p.price)}</div>
       <div class="kinara"></div>
       <table class="spec-table">
+        <tr><th>Article No.</th><td class="${p.articleNo?'':'ph'}">${val(p.articleNo)}</td></tr>
         <tr><th>Fabric</th><td class="${p.fabric?'':'ph'}">${val(p.fabric)}${p.fabricNote ? `<br><span class="ph" style="font-size:0.78rem;">${p.fabricNote}</span>` : ""}</td></tr>
         <tr><th>Weave</th><td class="${p.weave?'':'ph'}">${val(p.weave)}</td></tr>
         <tr><th>Colour</th><td>${val(p.colour)}</td></tr>

@@ -56,7 +56,7 @@ function productCardHTML(p){
     </a>
     <div class="card-body">
       <h3><a href="product.html?id=${p.id}">${p.name}</a></h3>
-      ${p.articleNo ? `<div class="card-sku">Art. No. ${p.articleNo}</div>` : ""}
+      ${p.articleNo ? `<div class="card-sku"><span class="sku-label">Article No.</span> <span class="sku-value">${p.articleNo}</span></div>` : ""}
       <div class="card-price">${formatPrice(p.price)}</div>
       <div class="card-meta">
         <div><span class="label">Fabric</span><span class="value">${fabric}</span></div>
@@ -200,20 +200,86 @@ function initShop(){
     sortSelect.addEventListener("change", () => { state.sort = sortSelect.value; apply(); });
   }
 
+  function clearAll(){
+    state.colour.clear(); state.fabric.clear(); state.weave.clear(); state.occasion.clear();
+    state.maxPrice = 10000;
+    state.section = null;
+    state.search = "";
+    const searchInput = document.querySelector("#site-search-input");
+    if(searchInput) searchInput.value = "";
+    history.replaceState(null, "", "shop.html");
+    document.querySelectorAll("[data-filter]").forEach(i => i.checked = false);
+    if(priceRange){ priceRange.value = 10000; priceOut.textContent = formatPrice(10000); }
+    renderSectionNote();
+    apply();
+  }
   const clearBtn = document.querySelector("#clear-filters");
-  if(clearBtn){
-    clearBtn.addEventListener("click", () => {
-      state.colour.clear(); state.fabric.clear(); state.weave.clear(); state.occasion.clear();
-      state.maxPrice = 10000;
-      state.section = null;
-      state.search = "";
-      const searchInput = document.querySelector("#site-search-input");
-      if(searchInput) searchInput.value = "";
-      history.replaceState(null, "", "shop.html");
-      document.querySelectorAll("[data-filter]").forEach(i => i.checked = false);
-      if(priceRange){ priceRange.value = 10000; priceOut.textContent = formatPrice(10000); }
-      renderSectionNote();
-      apply();
+  if(clearBtn) clearBtn.addEventListener("click", clearAll);
+  const clearBtnMobile = document.querySelector("#clear-filters-mobile");
+  if(clearBtnMobile) clearBtnMobile.addEventListener("click", clearAll);
+
+  // ---- Mobile filter sheet open/close ----
+  const filterPanel = document.querySelector("#filter-panel");
+  const backdrop = document.querySelector("#filter-backdrop");
+  const openBtn = document.querySelector("#filter-open");
+  const closeBtn = document.querySelector("#filter-close");
+  const applyBtnMobile = document.querySelector("#apply-filters-mobile");
+
+  function openSheet(){
+    filterPanel.classList.add("open-mobile");
+    backdrop.classList.add("open");
+    document.body.style.overflow = "hidden";
+  }
+  function closeSheet(){
+    filterPanel.classList.remove("open-mobile");
+    backdrop.classList.remove("open");
+    document.body.style.overflow = "";
+  }
+  if(openBtn) openBtn.addEventListener("click", openSheet);
+  if(closeBtn) closeBtn.addEventListener("click", closeSheet);
+  if(backdrop) backdrop.addEventListener("click", closeSheet);
+  if(applyBtnMobile) applyBtnMobile.addEventListener("click", closeSheet);
+
+  // ---- Active filter chips ----
+  function renderChips(){
+    const wrap = document.querySelector("#active-chips");
+    if(!wrap) return;
+    const chips = [];
+    const closeIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>`;
+    ["colour","fabric","weave","occasion"].forEach(key => {
+      state[key].forEach(val => {
+        chips.push({ label: val, remove: () => { state[key].delete(val); syncCheckboxes(); apply(); } });
+      });
+    });
+    if(state.maxPrice < 10000){
+      chips.push({ label: `Under ${formatPrice(state.maxPrice)}`, remove: () => {
+        state.maxPrice = 10000;
+        if(priceRange){ priceRange.value = 10000; priceOut.textContent = formatPrice(10000); }
+        apply();
+      }});
+    }
+    if(state.search){
+      chips.push({ label: `“${state.search}”`, remove: () => {
+        state.search = "";
+        const si = document.querySelector("#site-search-input");
+        if(si) si.value = "";
+        history.replaceState(null, "", "shop.html");
+        renderSectionNote();
+        apply();
+      }});
+    }
+    wrap.innerHTML = chips.map((c, i) => `<span class="chip" data-chip="${i}">${c.label}<button aria-label="Remove ${c.label}">${closeIcon}</button></span>`).join("")
+      + (chips.length > 1 ? `<span class="chip chip-clear-all" id="chip-clear-all">Clear all</span>` : "");
+    chips.forEach((c, i) => {
+      const el = wrap.querySelector(`[data-chip="${i}"] button`);
+      if(el) el.addEventListener("click", () => { c.remove(); renderChips(); });
+    });
+    const clearAllChip = document.querySelector("#chip-clear-all");
+    if(clearAllChip) clearAllChip.addEventListener("click", clearAll);
+  }
+  function syncCheckboxes(){
+    document.querySelectorAll("[data-filter]").forEach(i => {
+      i.checked = state[i.dataset.filter].has(i.value);
     });
   }
 
@@ -238,6 +304,16 @@ function initShop(){
     renderGrid(grid, items);
     const count = document.querySelector("#result-count");
     if(count) count.textContent = `${items.length} saree${items.length===1?"":"s"}`;
+    if(applyBtnMobile) applyBtnMobile.textContent = `Show ${items.length} saree${items.length===1?"":"s"}`;
+    const activeCount = state.colour.size + state.fabric.size + state.weave.size + state.occasion.size + (state.maxPrice < 10000 ? 1 : 0);
+    if(openBtn){
+      let b = openBtn.querySelector(".filter-count");
+      if(activeCount > 0){
+        if(!b){ b = document.createElement("span"); b.className = "filter-count"; openBtn.appendChild(b); }
+        b.textContent = activeCount;
+      } else if(b){ b.remove(); }
+    }
+    renderChips();
   }
 
   // Exposed so the header search bar can filter this page in place instead of navigating away.
@@ -250,12 +326,6 @@ function initShop(){
 
   renderSectionNote();
   apply();
-
-  const filterToggle = document.querySelector("#mobile-filter-toggle");
-  const filterPanel = document.querySelector(".filters");
-  if(filterToggle && filterPanel){
-    filterToggle.addEventListener("click", () => filterPanel.classList.toggle("open-mobile"));
-  }
 }
 
 // ---- Home page rails ----
@@ -305,7 +375,7 @@ function initProductDetail(){
     <div class="pdp-info">
       <div class="breadcrumb"><a href="index.html">Home</a> / <a href="shop.html">Shop</a> / ${p.name}</div>
       <h1>${p.name}</h1>
-      ${p.articleNo ? `<div class="pdp-sku">Art. No. ${p.articleNo}</div>` : ""}
+      ${p.articleNo ? `<div class="pdp-sku"><span class="sku-label">Article No.</span> <span class="sku-value">${p.articleNo}</span></div>` : ""}
       <div class="pdp-price">${formatPrice(p.price)}</div>
       <div class="kinara"></div>
       <table class="spec-table">

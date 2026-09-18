@@ -699,6 +699,9 @@ p{ margin: 0; }
 .page-header .breadcrumb{ font-size:0.82rem; color: var(--ink-soft); margin-bottom:14px; }
 .page-header .breadcrumb a:hover{ color: var(--rani); }
 .page-header p.lede{ color: var(--ink-soft); max-width: 56ch; margin-top:14px; }
+.page-header.compact{ padding: 30px 0 26px; }
+.page-header.compact h1{ font-size: clamp(1.9rem, 3.4vw, 2.6rem); }
+.page-header.compact p.lede{ margin-top:8px; font-size:0.94rem; }
 
 /* ---------- Collections ---------- */
 .collection-grid{
@@ -718,6 +721,20 @@ p{ margin: 0; }
 .collection-card .overlay h3{ color: var(--white); margin-bottom:6px; }
 .collection-card .overlay span{ font-size:0.82rem; color: rgba(255,255,255,0.75); }
 .collection-card.wide{ grid-column: span 2; }
+
+.collection-grid.compact{
+  grid-template-columns: repeat(5,1fr);
+  gap: 16px;
+}
+.collection-grid.compact .collection-card{ aspect-ratio: 3/4; }
+.collection-grid.compact .collection-card .overlay{ padding: 16px; }
+.collection-grid.compact .collection-card .overlay h3{ font-size: 1.02rem; margin-bottom:3px; }
+.collection-grid.compact .collection-card .overlay span{ font-size: 0.74rem; }
+.collection-grid.compact .placeholder-media .ph-mark{ width:34px; height:34px; margin-bottom:8px; }
+.collection-grid.compact .placeholder-media .ph-mark svg{ width:16px; height:16px; }
+.collection-grid.compact .placeholder-media span{ font-size:0.76rem; }
+
+.story-media.compact{ max-height:260px; max-width:280px; }
 
 /* ---------- Product Detail ---------- */
 .pdp{
@@ -956,6 +973,7 @@ p{ margin: 0; }
   .value-grid{ grid-template-columns: repeat(2,1fr); }
   .testimonial-grid{ grid-template-columns: repeat(2,1fr); }
   .collection-grid{ grid-template-columns: repeat(2,1fr); }
+  .collection-grid.compact{ grid-template-columns: repeat(3,1fr); }
   .gallery-grid{ grid-template-columns: repeat(3,1fr); }
   .shop-layout{ grid-template-columns: 1fr; }
   .filters{ position:static; }
@@ -1006,6 +1024,7 @@ p{ margin: 0; }
   .testimonial-grid{ grid-template-columns: 1fr; }
   .collection-grid{ grid-template-columns: 1fr; }
   .collection-card.wide{ grid-column: span 1; }
+  .collection-grid.compact{ grid-template-columns: repeat(2,1fr); }
   .gallery-grid{ grid-template-columns: repeat(2,1fr); }
   .story-block, .story-block.reverse{ grid-template-columns: 1fr; }
   .story-media{ max-height:260px; max-width:100%; }

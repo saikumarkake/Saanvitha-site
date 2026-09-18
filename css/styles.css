@@ -505,7 +505,15 @@ p{ margin: 0; }
 .card-body h3{ margin-bottom: 6px; }
 .card-body h3 a:hover{ color: var(--rani); }
 .card-price{ font-family: var(--font-display); font-size: 1.2rem; color: var(--rani-deep); margin-bottom: 14px; }
-.card-sku{ font-size:0.72rem; letter-spacing:0.04em; color: var(--ink-faint); margin: 3px 0 6px; font-family: var(--font-body); }
+.card-sku{
+  display:inline-flex; align-items:center; gap:5px;
+  font-size:0.72rem; letter-spacing:0.03em; color: var(--ink-soft);
+  background: var(--paper); border:1px solid var(--line);
+  padding: 3px 9px; border-radius:3px;
+  margin: 4px 0 10px; font-family: var(--font-body); font-weight:500;
+}
+.card-sku .sku-label{ color: var(--ink-faint); font-weight:400; }
+.card-sku .sku-value{ color: var(--ink); letter-spacing:0.04em; }
 .card-price .was{ font-size:0.9rem; color: var(--ink-faint); text-decoration: line-through; margin-left:8px; font-family: var(--font-body); }
 
 .card-meta{
@@ -589,7 +597,7 @@ p{ margin: 0; }
 
 .shop-toolbar{
   display:flex; align-items:center; justify-content:space-between;
-  margin-bottom: 28px;
+  margin-bottom: 20px;
   flex-wrap:wrap; gap:14px;
 }
 .shop-toolbar .count{ color: var(--ink-soft); font-size: 0.9rem; }
@@ -600,7 +608,49 @@ p{ margin: 0; }
   font-size: 0.86rem;
   color: var(--ink);
 }
-.mobile-filter-btn{ display:none; }
+.mobile-filter-btn{
+  display:none;
+  align-items:center; gap:8px;
+  border:1px solid var(--line);
+  background: var(--white);
+  padding: 10px 16px;
+  font-size: 0.86rem;
+  color: var(--ink);
+  cursor:pointer;
+}
+.mobile-filter-btn svg{ width:16px; height:16px; }
+.mobile-filter-btn .filter-count{
+  background: var(--rani); color: var(--white);
+  border-radius:50%; width:18px; height:18px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:0.7rem; line-height:1;
+}
+
+/* ---------- Active filter chips ---------- */
+.active-chips{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:18px; }
+.active-chips:empty{ display:none; margin:0; }
+.chip{
+  display:inline-flex; align-items:center; gap:7px;
+  border:1px solid var(--line); background: var(--white);
+  padding: 6px 8px 6px 12px;
+  font-size:0.8rem; color: var(--ink-soft);
+}
+.chip button{
+  border:none; background:none; color: var(--ink-faint); cursor:pointer;
+  display:flex; align-items:center; justify-content:center; padding:2px;
+}
+.chip button:hover{ color: var(--rani); }
+.chip button svg{ width:12px; height:12px; }
+.chip.chip-clear-all{ border-color: var(--rani); color: var(--rani-deep); cursor:pointer; }
+
+/* ---------- Mobile filter sheet chrome (hidden on desktop) ---------- */
+.filters-mobile-head, .filters-mobile-foot{ display:none; }
+.filter-backdrop{
+  display:none;
+  position:fixed; inset:0; background: rgba(42,35,32,0.45);
+  z-index:70; opacity:0; transition: opacity .25s var(--ease);
+}
+.filter-backdrop.open{ display:block; opacity:1; }
 
 /* ---------- Craftsmanship / story blocks ---------- */
 .story-block{
@@ -803,7 +853,15 @@ p{ margin: 0; }
 .pdp-back-btn{ display:none; }
 .pdp-info h1{ font-size: clamp(1.5rem,2.4vw,2rem); margin-bottom:8px; }
 .pdp-price{ font-family: var(--font-display); font-size:1.4rem; color: var(--rani-deep); margin-bottom:14px; }
-.pdp-sku{ font-size:0.82rem; letter-spacing:0.04em; color: var(--ink-faint); margin: 2px 0 10px; }
+.pdp-sku{
+  display:inline-flex; align-items:center; gap:6px;
+  font-size:0.84rem; color: var(--ink-soft);
+  background: var(--paper); border:1px solid var(--line);
+  padding: 5px 12px; border-radius:3px;
+  margin: 4px 0 12px; font-weight:500;
+}
+.pdp-sku .sku-label{ color: var(--ink-faint); font-weight:400; }
+.pdp-sku .sku-value{ color: var(--ink); letter-spacing:0.04em; }
 .pdp-info .kinara{ margin-bottom:14px; }
 
 .spec-table{ width:100%; border-collapse:collapse; margin-bottom:16px; }
@@ -1089,6 +1147,42 @@ p{ margin: 0; }
   .stat-row{ grid-template-columns: 1fr 1fr; }
   .footer-top{ grid-template-columns: 1fr; gap:32px; }
   .wa-banner .container{ flex-direction:column; align-items:flex-start; }
+
+  /* ---------- Shop: filter bottom sheet ---------- */
+  .mobile-filter-btn{ display:inline-flex; }
+  .filters-desktop-title, .filters-desktop-clear{ display:none; }
+  .filters-mobile-head{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-bottom:16px; margin-bottom:16px; border-bottom:1px solid var(--line-soft);
+  }
+  .filters-close{ border:none; background:none; color: var(--ink); width:30px; height:30px; display:flex; align-items:center; justify-content:center; }
+  .filters-close svg{ width:18px; height:18px; }
+  .filters{
+    position: fixed;
+    left:0; right:0; bottom:0;
+    top:auto;
+    max-height: 82vh;
+    background: var(--cream);
+    border: none;
+    border-radius: 18px 18px 0 0;
+    box-shadow: 0 -8px 30px rgba(42,35,32,0.18);
+    padding: 22px 22px 0;
+    z-index: 80;
+    overflow-y: auto;
+    transform: translateY(100%);
+    transition: transform .32s var(--ease);
+    display:flex; flex-direction:column;
+  }
+  .filters.open-mobile{ transform: translateY(0); }
+  .filters-mobile-foot{
+    display:flex; gap:12px;
+    position: sticky; bottom:0;
+    background: var(--cream);
+    padding: 14px 0 22px;
+    margin-top:18px;
+    border-top:1px solid var(--line-soft);
+  }
+  .filters-mobile-foot .btn{ flex:1; }
 }
 
 @media (max-width: 520px){

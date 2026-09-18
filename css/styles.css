@@ -505,6 +505,7 @@ p{ margin: 0; }
 .card-body h3{ margin-bottom: 6px; }
 .card-body h3 a:hover{ color: var(--rani); }
 .card-price{ font-family: var(--font-display); font-size: 1.2rem; color: var(--rani-deep); margin-bottom: 14px; }
+.card-sku{ font-size:0.72rem; letter-spacing:0.04em; color: var(--ink-faint); margin: 3px 0 6px; font-family: var(--font-body); }
 .card-price .was{ font-size:0.9rem; color: var(--ink-faint); text-decoration: line-through; margin-left:8px; font-family: var(--font-body); }
 
 .card-meta{
@@ -802,6 +803,7 @@ p{ margin: 0; }
 .pdp-back-btn{ display:none; }
 .pdp-info h1{ font-size: clamp(1.5rem,2.4vw,2rem); margin-bottom:8px; }
 .pdp-price{ font-family: var(--font-display); font-size:1.4rem; color: var(--rani-deep); margin-bottom:14px; }
+.pdp-sku{ font-size:0.82rem; letter-spacing:0.04em; color: var(--ink-faint); margin: 2px 0 10px; }
 .pdp-info .kinara{ margin-bottom:14px; }
 
 .spec-table{ width:100%; border-collapse:collapse; margin-bottom:16px; }
